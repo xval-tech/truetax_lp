@@ -1452,14 +1452,58 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-    // Form: front-end only por enquanto; apontar para o backend/CRM quando definido
     const form = document.getElementById('lead-form');
-    form.addEventListener('submit', (ev) => {
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
-      // TODO: enviar payload para endpoint de leads (ex.: fetch('/api/leads', {...}))
-      form.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
+
+      const originalButtonContent = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando...';
+
+      const portalId = '51816011';
+      const formId = 'f8cc053e-4ba7-4b30-8be2-168b4850b2ae';
+      const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+      const payload = {
+        fields: [
+          { name: 'firstname', value: document.getElementById('nome').value.trim() },
+          { name: 'email', value: document.getElementById('email').value.trim() },
+          { name: 'empresa', value: document.getElementById('empresa').value.trim() },
+          { name: 'cargo', value: document.getElementById('cargo').value.trim() },
+          { name: 'erp', value: document.getElementById('erp').value },
+          { name: 'perfil', value: document.getElementById('perfil').value },
+          { name: 'message', value: document.getElementById('mensagem').value.trim() }
+        ],
+        context: {
+          pageUri: window.location.href,
+          pageName: document.title
+        }
+      };
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errorBody = await response.text();
+          throw new Error(`HubSpot respondeu ${response.status}: ${errorBody}`);
+        }
+
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+        form.reset();
+      } catch (error) {
+        console.error('Erro ao enviar formulário:', error);
+        alert('Não foi possível enviar seus dados agora. Tente novamente em alguns instantes.');
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonContent;
+      }
     });
   </script>
 </body>

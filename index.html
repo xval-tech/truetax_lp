@@ -169,82 +169,113 @@
     }
     .browser-url .lock { color: var(--lime); }
 
-    .app { display: grid; grid-template-columns: 216px 1fr; min-height: 520px; }
+    /* mockup fiel ao app: sidebar w-60, cards #181818, borda branca 9% */
+    .app { display: grid; grid-template-columns: 232px 1fr; min-height: 560px; }
     @media (max-width: 900px) { .app { grid-template-columns: 1fr; } .app-sidebar { display: none; } }
 
     .app-sidebar {
-      background: #0C0C0C; border-right: 1px solid var(--border-soft);
-      padding: 20px 14px; display: flex; flex-direction: column; gap: 4px;
+      background: #0A0A0A; border-right: 1px solid rgba(255,255,255,.08);
+      padding: 18px 0 14px; display: flex; flex-direction: column;
     }
-    .app-logo { display: flex; align-items: center; gap: 9px; padding: 4px 10px 18px; }
-    .app-logo-name { font-weight: 700; font-size: 15px; }
+    .app-logo { display: flex; align-items: center; gap: 10px; padding: 0 18px 16px; }
+    .app-logo-name { font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: -.01em; }
+    .app-logo-tag { font-size: 9px; text-transform: uppercase; letter-spacing: .18em; color: rgba(255,255,255,.35); margin-top: 5px; }
+    .side-empresa { padding: 0 14px 14px; }
+    .side-empresa-lbl { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4); padding: 0 4px 6px; }
+    .side-empresa-box {
+      display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 9px;
+    }
+    .side-empresa-box .nm { font-size: 11.5px; font-weight: 600; line-height: 1.3; min-width: 0; }
+    .side-empresa-box .cnpj { font-family: var(--mono); font-size: 9.5px; color: var(--text-mute); display: block; margin-top: 2px; }
+    .side-nav { flex: 1; display: flex; flex-direction: column; gap: 14px; padding: 0 11px; }
+    .side-group { display: flex; flex-direction: column; gap: 2px; }
+    .side-section { font-size: 9.5px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4); padding: 0 12px 4px; font-weight: 700; }
     .side-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 9px 12px; border-radius: 9px;
-      font-size: 13px; font-weight: 600; color: var(--text-mute);
+      position: relative; display: flex; align-items: center; gap: 11px;
+      padding: 8px 12px; border-radius: 8px;
+      font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.72);
     }
-    .side-item svg { flex-shrink: 0; opacity: .8; }
-    .side-item.active { background: var(--lime-soft); color: var(--lime); }
-    .side-section { font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: #4A4A4E; padding: 16px 12px 6px; font-weight: 700; }
-
-    .app-main { padding: 22px 26px; background: #111111; min-width: 0; }
-    .app-topbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
-    .company-select {
-      display: flex; align-items: center; gap: 10px;
-      background: #181818; border: 1px solid var(--border); border-radius: 10px;
-      padding: 9px 14px; font-size: 13px; font-weight: 600;
+    .side-item svg { flex-shrink: 0; }
+    .side-item.active { background: #232323; color: var(--lime); font-weight: 600; }
+    .side-item.active::before {
+      content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 3px; height: 16px; border-radius: 999px; background: var(--lime);
     }
-    .company-select .cnpj { font-family: var(--mono); font-size: 11px; color: var(--text-mute); font-weight: 400; }
-    .company-select .chev { color: var(--text-mute); margin-left: 4px; }
-    .conn-status {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 14px; border-radius: 999px;
-      background: var(--lime-soft); border: 1px solid rgba(163,230,53,.25);
-      font-size: 12px; font-weight: 600; color: var(--lime);
+    .side-foot { border-top: 1px solid rgba(255,255,255,.08); margin-top: 14px; padding: 14px 14px 0; display: flex; flex-direction: column; gap: 10px; }
+    .side-health {
+      display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
+      padding: 5px 11px; border-radius: 999px; border: 1px solid rgba(255,255,255,.08);
+      font-size: 10.5px; color: rgba(255,255,255,.8);
     }
-    .conn-status .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); animation: pulse 2.2s infinite; }
+    .side-health .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); animation: pulse 2.2s infinite; }
+    .side-user {
+      display: flex; align-items: center; gap: 9px; padding: 7px 9px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 9px;
+    }
+    .side-user .av { width: 26px; height: 26px; border-radius: 50%; background: var(--lime-soft); color: var(--lime); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .side-user .nm { font-size: 11px; font-weight: 600; }
+    .side-user .rl { font-size: 9.5px; color: rgba(255,255,255,.45); }
 
-    .app-title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
-    .app-h1 { font-size: 18px; font-weight: 700; }
-    .app-h1 span { color: var(--text-mute); font-weight: 500; font-size: 13px; margin-left: 10px; }
-    .period-pill { font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); background: #181818; border: 1px solid var(--border); padding: 6px 12px; border-radius: 999px; }
+    .app-main { padding: 24px 26px; background: #0D0D0D; min-width: 0; }
+    .app-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
+    .app-kicker { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .18em; color: var(--lime); }
+    .app-h1 { font-size: 25px; font-weight: 700; letter-spacing: -.02em; margin-top: 5px; }
+    .app-sub { font-size: 11.5px; color: var(--text-mute); margin-top: 6px; max-width: 430px; line-height: 1.5; }
+    .app-actions { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+    .period-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 600; color: rgba(255,255,255,.8);
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12);
+      padding: 6px 13px; border-radius: 999px;
+    }
+    .period-pill svg { color: rgba(255,255,255,.4); }
+    .app-stamp { font-size: 10.5px; color: var(--text-mute); }
 
-    .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+    .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; margin-bottom: 18px; }
     @media (max-width: 720px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
     .kpi {
-      background: #161616; border: 1px solid var(--border-soft); border-radius: 12px;
-      padding: 14px 16px;
+      position: relative; overflow: hidden;
+      background: #181818; border: 1px solid rgba(255,255,255,.09); border-radius: 12px;
+      padding: 15px 16px;
     }
-    .kpi .k-label { font-size: 11px; color: var(--text-mute); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
-    .kpi .k-value { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
-    .kpi .k-delta { font-size: 11px; font-weight: 600; margin-top: 3px; }
-    .k-lime { color: var(--lime); } .k-red { color: var(--red); } .k-cyan { color: var(--cyan); }
+    .kpi::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--k-line, var(--lime)); opacity: .9; }
+    .kpi .k-label { font-size: 10px; color: var(--text-mute); font-weight: 500; text-transform: uppercase; letter-spacing: .08em; }
+    .kpi .k-value { font-family: var(--mono); font-size: 19px; font-weight: 600; letter-spacing: -0.03em; margin-top: 6px; white-space: nowrap; }
+    .kpi .k-delta { font-size: 10.5px; color: var(--text-mute); margin-top: 6px; }
 
-    .dash-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; }
+    .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
     @media (max-width: 720px) { .dash-grid { grid-template-columns: 1fr; } }
     .panel {
-      background: #161616; border: 1px solid var(--border-soft); border-radius: 12px;
-      padding: 16px 18px;
+      background: #181818; border: 1px solid rgba(255,255,255,.09); border-radius: 12px;
+      padding: 17px 18px;
     }
-    .panel-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; }
-    .panel-sub { font-size: 11px; color: var(--text-mute); margin-bottom: 14px; }
-    .legend { display: flex; gap: 14px; font-size: 11px; color: var(--text-dim); }
+    .panel.gold { border-color: rgba(163,230,53,.2); margin-top: 13px; }
+    .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .panel-kicker { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .18em; color: var(--lime); }
+    .panel-title { font-size: 14.5px; font-weight: 700; margin-top: 5px; letter-spacing: -.01em; }
+    .panel-sub { font-size: 10.5px; color: var(--text-mute); margin-top: 4px; }
+    .panel-ico { color: rgba(163,230,53,.6); flex-shrink: 0; }
+    .gold-badge { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--lime); background: var(--lime-soft); border: 1px solid rgba(163,230,53,.3); padding: 3px 8px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+    .impacto-box { text-align: right; flex-shrink: 0; }
+    .impacto-box .lbl { font-size: 9.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-mute); }
+    .impacto-box .val { font-family: var(--mono); font-size: 19px; font-weight: 700; color: var(--amber); margin-top: 3px; }
+    .impacto-box .sub { font-size: 9.5px; color: var(--text-mute); margin-top: 2px; }
+    .legend { display: flex; gap: 14px; font-size: 10.5px; color: var(--text-dim); justify-content: center; margin-top: 10px; }
     .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; }
 
-    .alert-item {
-      display: flex; gap: 11px; align-items: flex-start;
-      padding: 11px 12px; border-radius: 10px; margin-bottom: 8px;
-      border: 1px solid transparent;
-    }
-    .alert-item.crit { background: var(--red-soft); border-color: rgba(248,113,113,.22); }
-    .alert-item.warn { background: rgba(251,191,36,.08); border-color: rgba(251,191,36,.18); }
-    .alert-item.ok { background: var(--lime-soft); border-color: rgba(163,230,53,.2); }
-    .alert-ico { width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; }
-    .crit .alert-ico { background: rgba(248,113,113,.18); color: var(--red); }
-    .warn .alert-ico { background: rgba(251,191,36,.15); color: var(--amber); }
-    .ok .alert-ico { background: rgba(163,230,53,.18); color: var(--lime); }
-    .alert-txt { font-size: 12px; font-weight: 600; line-height: 1.4; }
-    .alert-meta { font-size: 10.5px; color: var(--text-mute); font-weight: 400; font-family: var(--mono); margin-top: 2px; }
+    /* lista de alertas — igual à do app: avatar redondo, emitente, tipo · detalhe, valor âmbar */
+    .alert-list { margin-top: 14px; }
+    .alert-item { display: flex; gap: 12px; align-items: center; padding: 11px 0; border-top: 1px solid rgba(255,255,255,.07); }
+    .alert-item:first-child { border-top: 0; }
+    .alert-ico { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid; }
+    .alert-body { min-width: 0; flex: 1; }
+    .alert-txt { font-size: 12.5px; font-weight: 600; }
+    .alert-meta { font-size: 10.5px; color: var(--text-mute); margin-top: 2px; }
+    .alert-val { text-align: right; flex-shrink: 0; }
+    .alert-val .v { font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: var(--amber); }
+    .alert-val .u { font-size: 8.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-mute); }
+    .ver-todas { font-size: 10.5px; font-weight: 600; color: var(--lime); display: inline-flex; align-items: center; gap: 4px; }
 
     /* ============ PROBLEM ============ */
     .section { padding: 100px 0; }
@@ -495,8 +526,8 @@
     @media (max-width: 640px) { .intel-callout { flex-direction: column; align-items: flex-start; } }
 
     /* ============ AUDIENCE ============ */
-    .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 52px; }
-    @media (max-width: 860px) { .audience-grid { grid-template-columns: 1fr; } }
+    .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+    @media (max-width: 1040px) { .audience-grid { grid-template-columns: 1fr; max-width: 620px; } }
     .aud-card {
       background: var(--card); border: 1px solid var(--border); border-radius: 22px;
       padding: 40px 36px; position: relative; overflow: hidden;
@@ -505,11 +536,13 @@
     .aud-card:hover { transform: translateY(-3px); }
     .aud-card.corp:hover { border-color: var(--lime-dim); }
     .aud-card.bpo:hover { border-color: rgba(34,211,238,.4); }
+    .aud-card.mid:hover { border-color: rgba(167,139,250,.4); }
     .aud-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     }
     .aud-card.corp::before { background: linear-gradient(90deg, var(--lime), transparent); }
     .aud-card.bpo::before { background: linear-gradient(90deg, var(--cyan), transparent); }
+    .aud-card.mid::before { background: linear-gradient(90deg, var(--purple), transparent); }
     .aud-tag {
       display: inline-block; padding: 6px 14px; border-radius: 999px;
       font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
@@ -517,6 +550,7 @@
     }
     .corp .aud-tag { background: var(--lime-soft); color: var(--lime); }
     .bpo .aud-tag { background: rgba(34,211,238,.1); color: var(--cyan); }
+    .mid .aud-tag { background: rgba(167,139,250,.1); color: var(--purple); }
     .aud-card h3 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
     .aud-card > p { color: var(--text-dim); font-size: 15px; margin-bottom: 20px; }
     .aud-list { list-style: none; }
@@ -524,6 +558,7 @@
     .aud-list li strong { color: var(--text); }
     .corp .aud-list .ck { color: var(--lime); }
     .bpo .aud-list .ck { color: var(--cyan); }
+    .mid .aud-list .ck { color: var(--purple); }
     .aud-list .ck { flex-shrink: 0; margin-top: 3px; }
 
     /* ============ AUTHORITY ============ */
@@ -619,12 +654,57 @@
     .footer-links a:hover { color: var(--lime); }
     .footer-copy { font-size: 12.5px; color: #52525B; width: 100%; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border-soft); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
+    /* ============ IA ============ */
+    .ia-split { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: start; margin-top: 52px; }
+    @media (max-width: 980px) { .ia-split { grid-template-columns: 1fr; gap: 36px; } }
+    .ia-chat { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+    .ia-chat-bar { display: flex; align-items: center; gap: 12px; padding: 11px 14px; background: #0F0F0F; border-bottom: 1px solid var(--border); }
+    .ia-chat-body { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 16px; }
+    .ia-q { align-self: flex-end; max-width: 88%; background: var(--lime-soft); border: 1px solid var(--lime-dim); font-size: 13.5px; font-weight: 600; padding: 11px 15px; border-radius: 14px 14px 4px 14px; }
+    .ia-a { display: flex; flex-direction: column; gap: 12px; }
+    .ia-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--lime); }
+    .ia-narr { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
+    .ia-narr strong { color: var(--text); font-weight: 700; }
+    .ia-bars { display: flex; flex-direction: column; gap: 9px; padding: 14px; background: #0F0F0F; border: 1px solid var(--border-soft); border-radius: 11px; }
+    .ia-bar-row { display: flex; align-items: center; gap: 10px; }
+    .ia-bar-name { font-size: 11.5px; color: var(--text-dim); width: 116px; flex-shrink: 0; }
+    .ia-bar-track { flex: 1; height: 9px; background: #1B1B1B; border-radius: 999px; overflow: hidden; }
+    .ia-bar-fill { height: 100%; border-radius: 999px; }
+    .ia-bar-val { font-family: var(--mono); font-size: 11px; color: var(--text-dim); width: 76px; text-align: right; }
+    .ia-source {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 11px 13px; background: #0F0F0F; border: 1px solid var(--border-soft); border-radius: 11px;
+      font-size: 11.5px; color: var(--text-mute);
+    }
+    .ia-source .ck { color: var(--lime); flex-shrink: 0; }
+    .ia-source .lnk { margin-left: auto; color: var(--lime); font-weight: 600; white-space: nowrap; }
+    .ia-composer { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-top: 1px solid var(--border); background: #0F0F0F; }
+    .ia-composer .fake-input { flex: 1; font-size: 12.5px; color: var(--text-mute); }
+    .ia-send { width: 30px; height: 30px; border-radius: 9px; background: var(--lime); color: #0A0A0A; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ia-guards { display: flex; flex-direction: column; gap: 14px; }
+    .ia-guard { display: flex; gap: 13px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 16px 18px; }
+    .ia-guard .g-ico { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ia-guard h4 { font-size: 14.5px; font-weight: 700; margin-bottom: 4px; }
+    .ia-guard p { font-size: 13px; color: var(--text-dim); line-height: 1.55; }
+    .ia-guard code { font-family: var(--mono); font-size: 11.5px; color: var(--cyan); }
+    .ia-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
+    @media (max-width: 1000px) { .ia-cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .ia-cards { grid-template-columns: 1fr; } }
+    .ia-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; transition: border-color .2s, background .2s; }
+    .ia-card:hover { border-color: var(--lime-dim); background: var(--card-hover); }
+    .ia-card .c-top { display: flex; align-items: center; gap: 11px; margin-bottom: 12px; }
+    .ia-card .c-ico { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ia-card h4 { font-size: 15.5px; font-weight: 700; letter-spacing: -.01em; }
+    .ia-card p { font-size: 13.5px; color: var(--text-dim); line-height: 1.55; }
+    .ia-card .c-out { margin-top: 13px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .ia-chip { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); background: #101010; border: 1px solid var(--border); padding: 4px 9px; border-radius: 999px; }
+
     /* ============ REVEAL ANIMATION ============ */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .toast, .badge .dot, .conn-status .dot { animation: none; }
+      .toast, .badge .dot, .side-health .dot { animation: none; }
       html { scroll-behavior: auto; }
     }
   </style>
@@ -641,6 +721,7 @@
       <div class="nav-links">
         <a href="#problema">O risco</a>
         <a href="#solucao">Solução</a>
+        <a href="#ia">IA</a>
         <a href="#resultados">Resultados</a>
         <a href="#inteligencia">Inteligência</a>
         <a href="#publico">Para quem</a>
@@ -692,152 +773,252 @@
           <div class="browser">
             <div class="browser-bar">
               <div class="browser-dots"><span></span><span></span><span></span></div>
-              <div class="browser-url"><span class="lock">🔒</span> app.truetax.com.br/conciliacao</div>
+              <div class="browser-url"><span class="lock">🔒</span> app.truetax.com.br</div>
               <div style="width:53px"></div>
             </div>
             <div class="app">
               <aside class="app-sidebar">
                 <div class="app-logo">
-                  <img src="public/truetax_icone.png" alt="" style="width:28px;height:28px;border-radius:7px;display:block;" />
-                  <div class="app-logo-name">True<span style="color:var(--lime)">Tax</span></div>
+                  <img src="public/truetax_icone.png" alt="" style="width:32px;height:32px;border-radius:8px;display:block;" />
+                  <div>
+                    <div class="app-logo-name">True<span style="color:var(--lime)">Tax</span></div>
+                    <div class="app-logo-tag">CBS · IBS · IS · Reforma</div>
+                  </div>
                 </div>
-                <div class="side-item">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
-                  Visão Geral
+
+                <div class="side-empresa">
+                  <div class="side-empresa-lbl">Empresa ativa</div>
+                  <div class="side-empresa-box">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="1.8" style="flex-shrink:0"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+                    <div style="min-width:0">
+                      <div class="nm">XVAL Tecnologia LTDA</div>
+                      <span class="cnpj">12.345.678/0001-90</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="side-item active">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M8 21H3v-5M21 3l-7 7M3 21l7-7"/></svg>
-                  Conciliação IBS/CBS
+
+                <div class="side-nav">
+                  <div class="side-group">
+                    <div class="side-section">Geral</div>
+                    <div class="side-item active">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                      Visão geral
+                    </div>
+                  </div>
+                  <div class="side-group">
+                    <div class="side-section">Cadastros</div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>
+                      Empresas
+                    </div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                      Usuários
+                    </div>
+                  </div>
+                  <div class="side-group">
+                    <div class="side-section">Processos fiscais</div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
+                      Documentos
+                    </div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22h18M4 10h16M5 10V7l7-4 7 4v3M7 10v8M12 10v8M17 10v8"/></svg>
+                      Apuração Fisco
+                    </div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9l3-3-3-3M17 6H7a2 2 0 0 0-2 2v2M10 15l-3 3 3 3M7 18h10a2 2 0 0 0 2-2v-2"/></svg>
+                      Conciliação
+                    </div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+                      Divergências
+                    </div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1z"/></svg>
+                      Fornecedores
+                    </div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                      Caça a créditos
+                    </div>
+                    <div class="side-item">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M7 8h10M7 12h6"/></svg>
+                      Consulta IA
+                    </div>
+                  </div>
                 </div>
-                <div class="side-item">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-                  Divergências
-                </div>
-                <div class="side-item">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-                  Documentos Fiscais
-                </div>
-                <div class="side-item">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 15 4-6 4 3 5-7"/></svg>
-                  Créditos
-                </div>
-                <div class="side-section">Administração</div>
-                <div class="side-item">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                  Certificados
-                </div>
-                <div class="side-item">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  Equipe
+
+                <div class="side-foot">
+                  <div class="side-health">
+                    <span class="dot"></span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    Serviços operacionais
+                  </div>
+                  <div class="side-user">
+                    <span class="av">FA</span>
+                    <div style="min-width:0;flex:1">
+                      <div class="nm">Filipe Andrade</div>
+                      <div class="rl">admin</div>
+                    </div>
+                  </div>
                 </div>
               </aside>
+
               <div class="app-main">
-                <div class="app-topbar">
-                  <div class="company-select">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A3E635" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
-                    Metalúrgica Andrade S.A.
-                    <span class="cnpj">12.345.678/0001-90</span>
-                    <svg class="chev" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                <div class="app-head">
+                  <div style="min-width:0">
+                    <div class="app-kicker">Boa tarde, XVAL Tecnologia LTDA</div>
+                    <div class="app-h1">Cockpit <span style="color:var(--lime)">fiscal</span></div>
+                    <div class="app-sub">Visão de materialidade e aderência ERP × Fisco de XVAL Tecnologia LTDA, competência junho/2026.</div>
                   </div>
-                  <div class="conn-status"><span class="dot"></span> Conectado via mTLS · Receita Federal</div>
+                  <div class="app-actions">
+                    <span class="period-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                      junho/2026
+                    </span>
+                    <span class="period-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+                      Atualizar
+                    </span>
+                    <span class="app-stamp">Atualizado às 14:32</span>
+                  </div>
                 </div>
-                <div class="app-title-row">
-                  <div class="app-h1">Conciliação IBS/CBS <span>Repositório de XMLs × Apuração Assistida</span></div>
-                  <div class="period-pill">Período: 06/2026 &nbsp;·&nbsp; Prazo de manifestação: 12 dias</div>
-                </div>
+
                 <div class="kpi-row">
-                  <div class="kpi">
+                  <div class="kpi" style="--k-line:#A3E635">
                     <div class="k-label">Documentos conciliados</div>
                     <div class="k-value">48.217</div>
-                    <div class="k-delta k-lime">99,2% do período</div>
+                    <div class="k-delta">99,2% do período</div>
                   </div>
-                  <div class="kpi">
+                  <div class="kpi" style="--k-line:#F87171">
                     <div class="k-label">Divergências abertas</div>
-                    <div class="k-value k-red">37</div>
-                    <div class="k-delta" style="color:var(--text-mute)">R$ 1,24 mi em risco</div>
+                    <div class="k-value">37</div>
+                    <div class="k-delta">R$ 1,2 mi em risco</div>
                   </div>
-                  <div class="kpi">
-                    <div class="k-label">Créditos IBS/CBS</div>
-                    <div class="k-value k-lime">R$ 8,6 mi</div>
-                    <div class="k-delta k-lime">100% apropriados</div>
+                  <div class="kpi" style="--k-line:#38BDF8">
+                    <div class="k-label">Créditos CBS (XMLs)</div>
+                    <div class="k-value">R$ 8,6 mi</div>
+                    <div class="k-delta">94% conciliados com o Fisco</div>
                   </div>
-                  <div class="kpi">
-                    <div class="k-label">Saldo a recolher</div>
+                  <div class="kpi" style="--k-line:#E879F9">
+                    <div class="k-label">Saldo CBS apurado</div>
                     <div class="k-value">R$ 3,2 mi</div>
-                    <div class="k-delta k-cyan">conferido com seus XMLs</div>
+                    <div class="k-delta">Débitos CBS na apuração assistida</div>
                   </div>
                 </div>
+
                 <div class="dash-grid">
                   <div class="panel">
-                    <div class="panel-title">
-                      Débitos vs Créditos · IBS/CBS
-                      <div class="legend">
-                        <span><i style="background:#3F3F46"></i>Débitos</span>
-                        <span><i style="background:var(--lime)"></i>Créditos</span>
+                    <div class="panel-head">
+                      <div>
+                        <div class="panel-kicker">Débitos vs Créditos · CBS · IBS · IS</div>
+                        <div class="panel-title">Seus XMLs × apuração Fisco</div>
                       </div>
+                      <svg class="panel-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M8 21h8M3 7h18M6.5 7 3 14h7zM17.5 7 14 14h7z"/></svg>
                     </div>
-                    <div class="panel-sub">Comparativo mensal · Seus XMLs × Fisco (R$ milhões)</div>
-                    <svg viewBox="0 0 420 190" width="100%" style="display:block" role="img" aria-label="Gráfico de barras comparando débitos e créditos de IBS/CBS por mês">
-                      <g stroke="#232323" stroke-width="1">
-                        <line x1="30" y1="20" x2="410" y2="20"/><line x1="30" y1="60" x2="410" y2="60"/>
-                        <line x1="30" y1="100" x2="410" y2="100"/><line x1="30" y1="140" x2="410" y2="140"/>
+                    <svg viewBox="0 0 300 150" width="100%" height="150" style="display:block;margin-top:14px" role="img" aria-label="Créditos dos XMLs comparados aos débitos da apuração do Fisco">
+                      <g stroke="rgba(255,255,255,.06)" stroke-dasharray="3 3">
+                        <line x1="34" y1="18" x2="292" y2="18"/><line x1="34" y1="48" x2="292" y2="48"/>
+                        <line x1="34" y1="78" x2="292" y2="78"/><line x1="34" y1="108" x2="292" y2="108"/>
                       </g>
-                      <g font-family="JetBrains Mono, monospace" font-size="9" fill="#71717A">
-                        <text x="8" y="23">12</text><text x="8" y="63">9</text><text x="8" y="103">6</text><text x="8" y="143">3</text>
+                      <g font-family="JetBrains Mono, monospace" font-size="8" fill="#71717A">
+                        <text x="4" y="21">R$ 12mi</text><text x="10" y="51">R$ 8mi</text><text x="10" y="81">R$ 4mi</text>
                       </g>
-                      <!-- Jan -->
-                      <rect x="46" y="86" width="20" height="74" rx="4" fill="#3F3F46"/>
-                      <rect x="70" y="104" width="20" height="56" rx="4" fill="#A3E635"/>
-                      <!-- Fev -->
-                      <rect x="108" y="72" width="20" height="88" rx="4" fill="#3F3F46"/>
-                      <rect x="132" y="96" width="20" height="64" rx="4" fill="#A3E635"/>
-                      <!-- Mar -->
-                      <rect x="170" y="80" width="20" height="80" rx="4" fill="#3F3F46"/>
-                      <rect x="194" y="90" width="20" height="70" rx="4" fill="#A3E635"/>
-                      <!-- Abr -->
-                      <rect x="232" y="58" width="20" height="102" rx="4" fill="#3F3F46"/>
-                      <rect x="256" y="84" width="20" height="76" rx="4" fill="#A3E635"/>
-                      <!-- Mai -->
-                      <rect x="294" y="66" width="20" height="94" rx="4" fill="#3F3F46"/>
-                      <rect x="318" y="78" width="20" height="82" rx="4" fill="#A3E635"/>
-                      <!-- Jun -->
-                      <rect x="356" y="48" width="20" height="112" rx="4" fill="#3F3F46"/>
-                      <rect x="380" y="70" width="20" height="90" rx="4" fill="#A3E635"/>
-                      <g font-family="JetBrains Mono, monospace" font-size="9.5" fill="#71717A" text-anchor="middle">
-                        <text x="68" y="176">Jan</text><text x="130" y="176">Fev</text><text x="192" y="176">Mar</text>
-                        <text x="254" y="176">Abr</text><text x="316" y="176">Mai</text><text x="378" y="176">Jun</text>
+                      <line x1="34" y1="122" x2="292" y2="122" stroke="rgba(255,255,255,.09)"/>
+                      <rect x="82" y="58" width="58" height="64" rx="6" fill="#A3E635"/>
+                      <rect x="186" y="98" width="58" height="24" rx="6" fill="#E879F9"/>
+                      <g font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#A1A1AA" text-anchor="middle">
+                        <text x="111" y="138">Créditos (XMLs)</text><text x="215" y="138">Débitos (Fisco)</text>
                       </g>
                     </svg>
                   </div>
+
                   <div class="panel">
-                    <div class="panel-title">Alertas de divergência</div>
-                    <div class="panel-sub">Priorizado por materialidade</div>
-                    <div class="alert-item crit">
-                      <div class="alert-ico">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-                      </div>
+                    <div class="panel-head">
                       <div>
-                        <div class="alert-txt">Divergência de Alíquota NCM encontrada</div>
-                        <div class="alert-meta">NF-e 48.291 · NCM 8483.40.10 · Δ R$ 412.780,00</div>
+                        <div class="panel-kicker">Comparativo mensal</div>
+                        <div class="panel-title">Créditos ERP × débitos Fisco</div>
+                        <div class="panel-sub">Valores CBS por competência conciliada</div>
                       </div>
+                      <svg class="panel-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
                     </div>
-                    <div class="alert-item warn">
-                      <div class="alert-ico">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                      </div>
-                      <div>
-                        <div class="alert-txt">Crédito não refletido na apuração do Fisco</div>
-                        <div class="alert-meta">CT-e 9.104 · aguardando manifestação · Δ R$ 96.310,00</div>
-                      </div>
+                    <svg viewBox="0 0 300 128" width="100%" height="128" style="display:block;margin-top:10px" role="img" aria-label="Créditos do ERP e débitos do Fisco por mês">
+                      <g stroke="rgba(255,255,255,.06)" stroke-dasharray="3 3">
+                        <line x1="30" y1="14" x2="296" y2="14"/><line x1="30" y1="44" x2="296" y2="44"/><line x1="30" y1="74" x2="296" y2="74"/>
+                      </g>
+                      <g font-family="JetBrains Mono, monospace" font-size="8" fill="#71717A">
+                        <text x="2" y="17">12mi</text><text x="6" y="47">8mi</text><text x="6" y="77">4mi</text>
+                      </g>
+                      <line x1="30" y1="104" x2="296" y2="104" stroke="rgba(255,255,255,.09)"/>
+                      <g>
+                        <rect x="40" y="52" width="13" height="52" rx="3" fill="#A3E635"/><rect x="55" y="66" width="13" height="38" rx="3" fill="#E879F9"/>
+                        <rect x="83" y="44" width="13" height="60" rx="3" fill="#A3E635"/><rect x="98" y="62" width="13" height="42" rx="3" fill="#E879F9"/>
+                        <rect x="126" y="50" width="13" height="54" rx="3" fill="#A3E635"/><rect x="141" y="68" width="13" height="36" rx="3" fill="#E879F9"/>
+                        <rect x="169" y="36" width="13" height="68" rx="3" fill="#A3E635"/><rect x="184" y="58" width="13" height="46" rx="3" fill="#E879F9"/>
+                        <rect x="212" y="42" width="13" height="62" rx="3" fill="#A3E635"/><rect x="227" y="60" width="13" height="44" rx="3" fill="#E879F9"/>
+                        <rect x="255" y="28" width="13" height="76" rx="3" fill="#A3E635"/><rect x="270" y="52" width="13" height="52" rx="3" fill="#E879F9"/>
+                      </g>
+                      <g font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" fill="#71717A" text-anchor="middle">
+                        <text x="54" y="118">Jan</text><text x="97" y="118">Fev</text><text x="140" y="118">Mar</text>
+                        <text x="183" y="118">Abr</text><text x="226" y="118">Mai</text><text x="269" y="118">Jun</text>
+                      </g>
+                    </svg>
+                    <div class="legend">
+                      <span><i style="background:#A3E635"></i>Créditos (XMLs)</span>
+                      <span><i style="background:#E879F9"></i>Débitos (Fisco)</span>
                     </div>
-                    <div class="alert-item ok">
-                      <div class="alert-ico">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                  </div>
+                </div>
+
+                <div class="panel gold">
+                  <div class="panel-head">
+                    <div>
+                      <div class="panel-kicker">Análise fiscal <span class="gold-badge">Gold Lake</span></div>
+                      <div class="panel-title">Materialidade e risco por competência</div>
+                      <div class="panel-sub">Snapshot analítico pós-conciliação no lake</div>
+                    </div>
+                    <div class="impacto-box">
+                      <div class="lbl">Impacto total</div>
+                      <div class="val">R$ 1.243.870,00</div>
+                      <div class="sub">37 divergência(s) na competência</div>
+                    </div>
+                  </div>
+
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07)">
+                    <div>
+                      <div style="font-size:12.5px;font-weight:700">Maior impacto fiscal</div>
+                      <div class="panel-sub" style="margin-top:2px">Top divergências no lake (independente do workflow)</div>
+                    </div>
+                    <span class="ver-todas">Ver todas
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M9 7h8v8"/></svg>
+                    </span>
+                  </div>
+
+                  <div class="alert-list">
+                    <div class="alert-item">
+                      <span class="alert-ico" style="border-color:#FBBF2444;background:#FBBF2414;color:#FBBF24;font-size:10px;font-weight:700">G</span>
+                      <div class="alert-body">
+                        <div class="alert-txt">Metalúrgica Delta Ltda.</div>
+                        <div class="alert-meta">Valor CBS divergente · CBS destacada acima da apuração</div>
                       </div>
-                      <div>
-                        <div class="alert-txt">Contestação aceita pelo Comitê Gestor</div>
-                        <div class="alert-meta">Lote 2026-06-B · 14 documentos · resolvido</div>
+                      <div class="alert-val"><div class="v">R$ 412.780,00</div><div class="u">em risco</div></div>
+                    </div>
+                    <div class="alert-item">
+                      <span class="alert-ico" style="border-color:#E879F944;background:#E879F914;color:#E879F9;font-size:10px;font-weight:700">G</span>
+                      <div class="alert-body">
+                        <div class="alert-txt">Transportadora Beta S.A.</div>
+                        <div class="alert-meta">Nota faltante no Fisco · CT-e não consta na apuração</div>
                       </div>
+                      <div class="alert-val"><div class="v">R$ 96.310,00</div><div class="u">em risco</div></div>
+                    </div>
+                    <div class="alert-item">
+                      <span class="alert-ico" style="border-color:#38BDF844;background:#38BDF814;color:#38BDF8;font-size:10px;font-weight:700">G</span>
+                      <div class="alert-body">
+                        <div class="alert-txt">Distribuidora Gama S.A.</div>
+                        <div class="alert-meta">Nota faltante no ERP · sem lançamento correspondente</div>
+                      </div>
+                      <div class="alert-val"><div class="v">R$ 61.940,00</div><div class="u">em risco</div></div>
                     </div>
                   </div>
                 </div>
@@ -972,21 +1153,21 @@
           <span class="eyebrow">Validação contínua</span>
           <h3>Valide a tributação de <span class="accent">cada XML</span> da sua operação.</h3>
           <p>
-            O TrueTax se conecta ao repositório de documentos fiscais da sua empresa ou dos seus clientes
-            e analisa cada XML contra as regras vigentes de IBS e CBS. Sem projeto pesado de implantação:
-            apontou o repositório, a análise começa.
+            Você sobe os XMLs de saídas e entradas; o TrueTax valida cada documento contra o
+            schema oficial da NF-e e lê os novos grupos de IBS, CBS e IS item a item. Sem projeto
+            pesado de implantação: subiu o lote, a análise começa.
           </p>
           <ul class="check-list">
-            <li><span class="ck">✓</span><span><strong>NCM e classificação tributária</strong> verificados item a item, documento a documento.</span></li>
-            <li><span class="ck">✓</span><span><strong>Alíquotas corretas de IBS e CBS</strong> conferidas na hora, incluindo regimes diferenciados e reduções.</span></li>
+            <li><span class="ck">✓</span><span><strong>Validação XSD na entrada</strong> — documento malformado não contamina a sua apuração.</span></li>
+            <li><span class="ck">✓</span><span><strong>Alertas de classificação tributária (cClassTrib)</strong> item a item, com o crédito sob risco quantificado em reais.</span></li>
             <li><span class="ck">✓</span><span><strong>Erro identificado a tempo</strong> de corrigir e contestar dentro do prazo legal de manifestação.</span></li>
             <li><span class="ck">✓</span><span><strong>Integração com o seu ERP no roadmap</strong>, para validar a tributação antes mesmo da emissão.</span></li>
           </ul>
         </div>
         <div class="nf-mock reveal">
           <div class="mock-head">
-            <div class="mock-title">Validação de XML <span>NF-e · repositório de documentos fiscais</span></div>
-            <span class="badge" style="font-size:11px;padding:5px 12px;">Análise automática</span>
+            <div class="mock-title">Validação de XML <span>NF-e · upload de saídas e entradas</span></div>
+            <span class="badge" style="font-size:11px;padding:5px 12px;">Validação XSD</span>
           </div>
           <div class="nf-field">
             <label>Chave de acesso</label>
@@ -1021,19 +1202,207 @@
               <img src="public/truetax_icone.png" alt="" style="width:24px;height:24px;border-radius:7px;display:block;" />
               <strong>Tributação validada</strong>
             </div>
-            <div class="toast-row"><span class="lbl">NCM 8483.40.10</span><span class="val">✓ válido</span></div>
+            <div class="toast-row"><span class="lbl">Schema NF-e</span><span class="val">✓ XSD ok</span></div>
+            <div class="toast-row"><span class="lbl">Classificação</span><span class="val">✓ conferida</span></div>
             <div class="toast-row"><span class="lbl">Alíquota IBS</span><span class="val">0,10%</span></div>
             <div class="toast-row"><span class="lbl">Alíquota CBS</span><span class="val">0,90%</span></div>
-            <div class="toast-row"><span class="lbl">Regime</span><span class="val">padrão</span></div>
-            <div class="toast-foot">resposta em 38ms · via mTLS ICP-Brasil</div>
+            <div class="toast-foot">gravado na camada Bronze · via mTLS ICP-Brasil</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ IA ============ -->
+  <section id="ia" class="section section-tinted">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow">Inteligência Artificial</span>
+        <h2 class="section-title">Pergunte em português.<br />A IA mostra <span class="accent">de onde veio o número.</span></h2>
+        <p class="section-sub">
+          Seu time pergunta como falaria com um colega — e recebe a resposta com o valor, o gráfico e a
+          origem do dado. Nada de número inventado: tudo sai dos seus próprios documentos fiscais,
+          pronto para levar à diretoria.
+        </p>
+      </div>
+
+      <div class="ia-split">
+        <!-- ===== CHAT MOCKUP ===== -->
+        <div class="ia-chat reveal">
+          <div class="ia-chat-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <span class="intel-url">app.truetax.com.br/consulta-ia</span>
+          </div>
+          <div class="ia-chat-body">
+            <div class="ia-q">Quais fornecedores mais me deram dor de cabeça com CBS em junho?</div>
+
+            <div class="ia-a">
+              <span class="ia-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+                Leitura da IA
+              </span>
+              <p class="ia-narr">
+                Cinco fornecedores concentram <strong>R$ 1,02 mi</strong> dos R$ 1,24 mi em divergência
+                de CBS no mês. <strong>Metalúrgica Delta</strong> sozinha responde por 41% — e é a única
+                que piorou em relação a maio.
+              </p>
+              <div class="ia-bars">
+                <div class="ia-bar-row">
+                  <span class="ia-bar-name">Metalúrgica Delta</span>
+                  <div class="ia-bar-track"><div class="ia-bar-fill" style="width:100%; background:var(--red);"></div></div>
+                  <span class="ia-bar-val">R$ 418,2k</span>
+                </div>
+                <div class="ia-bar-row">
+                  <span class="ia-bar-name">Transportadora Beta</span>
+                  <div class="ia-bar-track"><div class="ia-bar-fill" style="width:63%; background:var(--amber);"></div></div>
+                  <span class="ia-bar-val">R$ 262,9k</span>
+                </div>
+                <div class="ia-bar-row">
+                  <span class="ia-bar-name">Distribuidora Gama</span>
+                  <div class="ia-bar-track"><div class="ia-bar-fill" style="width:44%; background:var(--cyan);"></div></div>
+                  <span class="ia-bar-val">R$ 183,4k</span>
+                </div>
+                <div class="ia-bar-row">
+                  <span class="ia-bar-name">Insumos Sigma</span>
+                  <div class="ia-bar-track"><div class="ia-bar-fill" style="width:24%; background:var(--lime);"></div></div>
+                  <span class="ia-bar-val">R$ 101,7k</span>
+                </div>
+                <div class="ia-bar-row">
+                  <span class="ia-bar-name">Fornecedor Alfa</span>
+                  <div class="ia-bar-track"><div class="ia-bar-fill" style="width:13%; background:var(--lime);"></div></div>
+                  <span class="ia-bar-val">R$ 56,3k</span>
+                </div>
+              </div>
+              <div class="ia-source">
+                <svg class="ck" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                Apurado sobre 1.284 notas conciliadas de junho/2026
+                <span class="lnk">Ver como foi calculado</span>
+              </div>
+            </div>
+          </div>
+          <div class="ia-composer">
+            <span class="fake-input">Pergunte sobre conciliação, documentos ou apuração…</span>
+            <span class="period-pill" style="font-size:10.5px;padding:5px 10px;">06/2026</span>
+            <span class="ia-send">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- ===== GARANTIAS ===== -->
+        <div class="ia-guards reveal">
+          <div class="ia-guard">
+            <div class="g-ico f-lime">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <h4>A IA só consulta</h4>
+              <p>Ela lê os seus dados para responder, mas nunca altera nada. Nenhum lançamento ou apuração é modificado por ela.</p>
+            </div>
+          </div>
+          <div class="ia-guard">
+            <div class="g-ico f-cyan">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div>
+              <h4>Cada empresa vê só o que é seu</h4>
+              <p>O isolamento entre clientes é garantido pela plataforma, não pela IA. Um CNPJ nunca alcança o dado de outro.</p>
+            </div>
+          </div>
+          <div class="ia-guard">
+            <div class="g-ico f-purple">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V7M17 15v-6"/></svg>
+            </div>
+            <div>
+              <h4>O número não é chute</h4>
+              <p>Os valores vêm dos seus documentos fiscais. A IA explica e contextualiza — quem calcula imposto é o motor fiscal.</p>
+            </div>
+          </div>
+          <div class="ia-guard">
+            <div class="g-ico" style="background:rgba(251,191,36,.1); color:var(--amber);">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6"/></svg>
+            </div>
+            <div>
+              <h4>Toda resposta fica registrada</h4>
+              <p>Cada consulta guarda o que foi perguntado e o que foi respondido. Se precisar justificar a decisão depois, o histórico está lá.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CAPACIDADES DE IA ===== -->
+      <div class="ia-cards">
+        <div class="ia-card reveal">
+          <div class="c-top">
+            <div class="c-ico f-lime">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <h4>Explicar divergência</h4>
+          </div>
+          <p>Abra qualquer divergência e receba a leitura da IA: o que provavelmente aconteceu, de que lado está o erro e qual o encaminhamento.</p>
+          <div class="c-out"><span class="ia-chip">causa provável</span><span class="ia-chip">ação recomendada</span></div>
+        </div>
+
+        <div class="ia-card reveal">
+          <div class="c-top">
+            <div class="c-ico f-cyan">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h12M3 18h6"/></svg>
+            </div>
+            <h4>Priorizar a fila</h4>
+          </div>
+          <p>Centenas de divergências abertas viram uma ordem de trabalho. O time ataca o que tem materialidade e prazo, não o que apareceu primeiro.</p>
+          <div class="c-out"><span class="ia-chip">materialidade</span><span class="ia-chip">prazo</span></div>
+        </div>
+
+        <div class="ia-card reveal">
+          <div class="c-top">
+            <div class="c-ico f-purple">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h4>Sugerir classificação</h4>
+          </div>
+          <p>Para cada item com classificação tributária em risco, a IA propõe a correção. Quem aceita ou recusa é o analista — e a decisão fica registrada.</p>
+          <div class="c-out"><span class="ia-chip">a IA propõe</span><span class="ia-chip">você decide</span></div>
+        </div>
+
+        <div class="ia-card reveal">
+          <div class="c-top">
+            <div class="c-ico" style="background:rgba(251,191,36,.1); color:var(--amber);">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
+            </div>
+            <h4>Antecipar risco</h4>
+          </div>
+          <p>Quanto o passivo em aberto tende a virar no fim do trimestre, com piso e teto, e quais fornecedores estão piorando.</p>
+          <div class="c-out"><span class="ia-chip">projeção</span><span class="ia-chip">tendência</span></div>
+        </div>
+
+        <div class="ia-card reveal">
+          <div class="c-top">
+            <div class="c-ico" style="background:rgba(217,70,239,.12); color:#D946EF;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
+            </div>
+            <h4>Redigir o documento</h4>
+          </div>
+          <p>Memorando interno, comunicação ao fornecedor, dossiê de defesa ou ata de fechamento da competência — redigidos a partir dos dados da própria divergência.</p>
+          <div class="c-out"><span class="ia-chip">pronto para enviar</span><span class="ia-chip">imprimível</span></div>
+        </div>
+
+        <div class="ia-card reveal">
+          <div class="c-top">
+            <div class="c-ico f-lime">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+            </div>
+            <h4>Perguntar aos seus dados</h4>
+          </div>
+          <p>Pergunte sobre conciliação, documentos ou apuração como falaria com um colega. A resposta vem com o número, o gráfico e a origem.</p>
+          <div class="c-out"><span class="ia-chip">resposta em texto</span><span class="ia-chip">gráfico</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ RESULTADOS ============ -->
-  <section id="resultados" class="section section-tinted">
+  <section id="resultados" class="section section-dark">
     <div class="container">
       <div class="reveal">
         <span class="eyebrow">Benefícios</span>
@@ -1066,7 +1435,7 @@
   </section>
 
   <!-- ============ INTELIGÊNCIA TRIBUTÁRIA ============ -->
-  <section id="inteligencia" class="section section-dark">
+  <section id="inteligencia" class="section section-tinted">
     <div class="container">
       <div class="reveal">
         <span class="eyebrow">Inteligência Tributária</span>
@@ -1087,12 +1456,12 @@
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
               </div>
               <div>
-                <h3>Caça a créditos perdidos</h3>
-                <p>Notas emitidas contra o seu CNPJ que nunca entraram no ERP.</p>
+                <h3>Caça a créditos</h3>
+                <p>Notas e CT-e recebidos que nunca foram lançados no seu ERP.</p>
               </div>
             </div>
             <div class="intel-kpi">
-              <div class="k-label">Créditos IBS/CBS não apropriados · mês atual</div>
+              <div class="k-label">Crédito não lançado · competência 06/2026</div>
               <div class="k-value">R$ 312.450,00</div>
             </div>
             <div class="intel-row">
@@ -1107,7 +1476,7 @@
               <div class="r-doc">CT-e 84.512 <span>Transportadora Beta · R$ 12.300,00</span></div>
               <div class="r-val">+ R$ 1.082</div>
             </div>
-            <div class="intel-foot">fonte: API Receita (notas contra o CNPJ) × lançamentos do ERP</div>
+            <div class="intel-foot">fonte: DistDFe (notas contra o CNPJ) × lançamentos do ERP</div>
           </div>
         </div>
 
@@ -1115,7 +1484,7 @@
         <div class="intel-card reveal">
           <div class="intel-bar">
             <div class="browser-dots"><span></span><span></span><span></span></div>
-            <span class="intel-url">app.truetax.com.br/rating-fornecedores</span>
+            <span class="intel-url">app.truetax.com.br/fornecedores</span>
           </div>
           <div class="intel-body">
             <div class="intel-head">
@@ -1151,8 +1520,13 @@
               <div class="score-track"><div class="score-fill" style="width:8%; background:var(--lime);"></div></div>
               <span class="s-pct">2%</span>
             </div>
-            <div class="intel-legend" style="margin-top:14px;">% de notas com divergência de alíquota ou NCM · últimos 90 dias</div>
-            <div class="intel-foot">fonte: agregação da camada Gold por CNPJ emissor</div>
+            <div class="intel-legend" style="margin-top:16px; flex-wrap:wrap; gap:8px 14px;">
+              <span><i style="background:var(--lime);"></i>A · baixo risco</span>
+              <span><i style="background:var(--cyan);"></i>B · moderado</span>
+              <span><i style="background:var(--amber);"></i>C · atenção</span>
+              <span><i style="background:var(--red);"></i>D · alto retrabalho</span>
+            </div>
+            <div class="intel-foot">% de notas com divergência · agregação Gold por CNPJ emissor</div>
           </div>
         </div>
 
@@ -1195,7 +1569,7 @@
         <div class="intel-card reveal">
           <div class="intel-bar">
             <div class="browser-dots"><span></span><span></span><span></span></div>
-            <span class="intel-url">app.truetax.com.br/shadow-audit</span>
+            <span class="intel-url">app.truetax.com.br/divergencias</span>
           </div>
           <div class="intel-body">
             <div class="intel-head">
@@ -1203,27 +1577,27 @@
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
               </div>
               <div>
-                <h3>Malha fina preventiva</h3>
-                <p>As regras do Fisco rodando dentro de casa, antes do envio.</p>
+                <h3>Triagem de divergências</h3>
+                <p>Cada diferença entre ERP e Fisco com ação recomendada e valor.</p>
               </div>
             </div>
-            <div class="rule-check">
-              <div class="rc-info"><div class="rc-code">RF-104</div><div class="rc-desc">Batimento de saídas vs livro fiscal</div></div>
-              <span class="rc-status rc-ok">OK</span>
+            <div class="rule-check bad">
+              <div class="rc-info"><div class="rc-code">VALOR_CBS_DIVERGENTE</div><div class="rc-desc">CBS do XML diverge da apuração do Fisco</div></div>
+              <span class="rc-status rc-alert">Δ R$ 412.780</span>
             </div>
             <div class="rule-check bad">
-              <div class="rc-info"><div class="rc-code">RF-207</div><div class="rc-desc">Créditos apropriados vs notas de entrada</div></div>
-              <span class="rc-status rc-alert">Δ R$ 50.000</span>
+              <div class="rc-info"><div class="rc-code">NOTA_FALTANTE_FISCO</div><div class="rc-desc">Documento no ERP sem par na apuração</div></div>
+              <span class="rc-status rc-alert">Δ R$ 96.310</span>
             </div>
             <div class="rule-check">
-              <div class="rc-info"><div class="rc-code">RF-311</div><div class="rc-desc">Alíquota CBS/IBS consistente por NCM</div></div>
-              <span class="rc-status rc-ok">OK</span>
+              <div class="rc-info"><div class="rc-code">NOTA_FALTANTE_ERP</div><div class="rc-desc">Nota no Fisco que não entrou no ERP</div></div>
+              <span class="rc-status rc-ok">Em análise</span>
             </div>
             <div class="rule-check">
-              <div class="rc-info"><div class="rc-code">CG-052</div><div class="rc-desc">Recolhimento via split payment conciliado</div></div>
-              <span class="rc-status rc-ok">OK</span>
+              <div class="rc-info"><div class="rc-code">CALCULO_DIVERGENTE_RTC</div><div class="rc-desc">Divergência contra a calculadora oficial da RFB</div></div>
+              <span class="rc-status rc-ok">Resolvida</span>
             </div>
-            <div class="intel-foot">1 bloqueio potencial detectado antes do envio da apuração</div>
+            <div class="intel-foot">workflow: aberta → em análise → resolvida ou descartada</div>
           </div>
         </div>
       </div>
@@ -1242,7 +1616,8 @@
     <div class="container">
       <div class="reveal">
         <span class="eyebrow">Para quem é</span>
-        <h2 class="section-title">Feito para quem opera <span class="accent">em escala.</span></h2>
+        <h2 class="section-title">Feito para quem leva o fiscal <span class="accent">a sério.</span></h2>
+        <p class="section-sub">Não é uma questão de tamanho, e sim de maturidade. Se a sua operação depende de apuração correta, a régua é a mesma — muda só o tamanho da equipe que vai usar.</p>
       </div>
       <div class="audience-grid">
         <div class="aud-card corp reveal">
@@ -1257,6 +1632,20 @@
             <li><span class="ck">✓</span><span><strong>Visibilidade e controle total</strong> sobre a apuração assistida, por CNPJ e por estabelecimento.</span></li>
             <li><span class="ck">✓</span><span><strong>Trilha de auditoria completa</strong>: cada conciliação, contestação e aceite fica registrado como evidência.</span></li>
             <li><span class="ck">✓</span><span>Dashboards executivos para levar risco fiscal e créditos ao <strong>CFO em tempo real</strong>.</span></li>
+          </ul>
+        </div>
+        <div class="aud-card mid reveal">
+          <span class="aud-tag">Médias empresas</span>
+          <h3>Equipe enxuta, exigência de empresa grande</h3>
+          <p>
+            Operações de médio porte com um time fiscal pequeno, porém maduro, que já sabe
+            exatamente o que a Reforma vai cobrar.
+          </p>
+          <ul class="aud-list">
+            <li><span class="ck">✓</span><span><strong>Sem projeto de TI para começar</strong>: suba os XMLs que a sua empresa já emite e receba e veja a primeira conciliação no mesmo dia.</span></li>
+            <li><span class="ck">✓</span><span>Um analista rende como um time: <strong>a IA prioriza, explica e redige</strong> — a decisão continua sendo da sua equipe.</span></li>
+            <li><span class="ck">✓</span><span><strong>Créditos que passavam batido viram caixa.</strong> A caça a créditos costuma pagar a plataforma sozinha.</span></li>
+            <li><span class="ck">✓</span><span>Chegue em 2027 com o processo rodando, <strong>sem montar uma estrutura fiscal nova</strong> para dar conta da transição.</span></li>
           </ul>
         </div>
         <div class="aud-card bpo reveal">

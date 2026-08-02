@@ -169,55 +169,8 @@
     }
     .browser-url .lock { color: var(--lime); }
 
-    /* mockup fiel ao app: sidebar w-60, cards #181818, borda branca 9% */
-    .app { display: grid; grid-template-columns: 232px 1fr; min-height: 560px; }
-    @media (max-width: 900px) { .app { grid-template-columns: 1fr; } .app-sidebar { display: none; } }
-
-    .app-sidebar {
-      background: #0A0A0A; border-right: 1px solid rgba(255,255,255,.08);
-      padding: 18px 0 14px; display: flex; flex-direction: column;
-    }
-    .app-logo { display: flex; align-items: center; gap: 10px; padding: 0 18px 16px; }
-    .app-logo-name { font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: -.01em; }
-    .app-logo-tag { font-size: 9px; text-transform: uppercase; letter-spacing: .18em; color: rgba(255,255,255,.35); margin-top: 5px; }
-    .side-empresa { padding: 0 14px 14px; }
-    .side-empresa-lbl { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4); padding: 0 4px 6px; }
-    .side-empresa-box {
-      display: flex; align-items: center; gap: 8px; padding: 8px 10px;
-      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 9px;
-    }
-    .side-empresa-box .nm { font-size: 11.5px; font-weight: 600; line-height: 1.3; min-width: 0; }
-    .side-empresa-box .cnpj { font-family: var(--mono); font-size: 9.5px; color: var(--text-mute); display: block; margin-top: 2px; }
-    .side-nav { flex: 1; display: flex; flex-direction: column; gap: 14px; padding: 0 11px; }
-    .side-group { display: flex; flex-direction: column; gap: 2px; }
-    .side-section { font-size: 9.5px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4); padding: 0 12px 4px; font-weight: 700; }
-    .side-item {
-      position: relative; display: flex; align-items: center; gap: 11px;
-      padding: 8px 12px; border-radius: 8px;
-      font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.72);
-    }
-    .side-item svg { flex-shrink: 0; }
-    .side-item.active { background: #232323; color: var(--lime); font-weight: 600; }
-    .side-item.active::before {
-      content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-      width: 3px; height: 16px; border-radius: 999px; background: var(--lime);
-    }
-    .side-foot { border-top: 1px solid rgba(255,255,255,.08); margin-top: 14px; padding: 14px 14px 0; display: flex; flex-direction: column; gap: 10px; }
-    .side-health {
-      display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
-      padding: 5px 11px; border-radius: 999px; border: 1px solid rgba(255,255,255,.08);
-      font-size: 10.5px; color: rgba(255,255,255,.8);
-    }
-    .side-health .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); animation: pulse 2.2s infinite; }
-    .side-user {
-      display: flex; align-items: center; gap: 9px; padding: 7px 9px;
-      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 9px;
-    }
-    .side-user .av { width: 26px; height: 26px; border-radius: 50%; background: var(--lime-soft); color: var(--lime); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .side-user .nm { font-size: 11px; font-weight: 600; }
-    .side-user .rl { font-size: 9.5px; color: rgba(255,255,255,.45); }
-
-    .app-main { padding: 24px 26px; background: #0D0D0D; min-width: 0; }
+    /* mockup: painel principal do app, cards #181818, borda branca 9% */
+    .app { padding: 24px 26px; background: #0D0D0D; min-height: 560px; min-width: 0; }
     .app-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
     .app-kicker { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .18em; color: var(--lime); }
     .app-h1 { font-size: 25px; font-weight: 700; letter-spacing: -.02em; margin-top: 5px; }
@@ -777,95 +730,6 @@
               <div style="width:53px"></div>
             </div>
             <div class="app">
-              <aside class="app-sidebar">
-                <div class="app-logo">
-                  <img src="public/truetax_icone.png" alt="" style="width:32px;height:32px;border-radius:8px;display:block;" />
-                  <div>
-                    <div class="app-logo-name">True<span style="color:var(--lime)">Tax</span></div>
-                    <div class="app-logo-tag">CBS · IBS · IS · Reforma</div>
-                  </div>
-                </div>
-
-                <div class="side-empresa">
-                  <div class="side-empresa-lbl">Empresa ativa</div>
-                  <div class="side-empresa-box">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="1.8" style="flex-shrink:0"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
-                    <div style="min-width:0">
-                      <div class="nm">XVAL Tecnologia LTDA</div>
-                      <span class="cnpj">12.345.678/0001-90</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="side-nav">
-                  <div class="side-group">
-                    <div class="side-section">Geral</div>
-                    <div class="side-item active">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
-                      Visão geral
-                    </div>
-                  </div>
-                  <div class="side-group">
-                    <div class="side-section">Cadastros</div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>
-                      Empresas
-                    </div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
-                      Usuários
-                    </div>
-                  </div>
-                  <div class="side-group">
-                    <div class="side-section">Processos fiscais</div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
-                      Documentos
-                    </div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22h18M4 10h16M5 10V7l7-4 7 4v3M7 10v8M12 10v8M17 10v8"/></svg>
-                      Apuração Fisco
-                    </div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9l3-3-3-3M17 6H7a2 2 0 0 0-2 2v2M10 15l-3 3 3 3M7 18h10a2 2 0 0 0 2-2v-2"/></svg>
-                      Conciliação
-                    </div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-                      Divergências
-                    </div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1z"/></svg>
-                      Fornecedores
-                    </div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                      Caça a créditos
-                    </div>
-                    <div class="side-item">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M7 8h10M7 12h6"/></svg>
-                      Consulta IA
-                    </div>
-                  </div>
-                </div>
-
-                <div class="side-foot">
-                  <div class="side-health">
-                    <span class="dot"></span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                    Serviços operacionais
-                  </div>
-                  <div class="side-user">
-                    <span class="av">FA</span>
-                    <div style="min-width:0;flex:1">
-                      <div class="nm">Filipe Andrade</div>
-                      <div class="rl">admin</div>
-                    </div>
-                  </div>
-                </div>
-              </aside>
-
-              <div class="app-main">
                 <div class="app-head">
                   <div style="min-width:0">
                     <div class="app-kicker">Boa tarde, XVAL Tecnologia LTDA</div>
@@ -1022,7 +886,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>

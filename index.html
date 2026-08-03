@@ -204,6 +204,11 @@
       padding: 17px 18px;
     }
     .panel.gold { border-color: rgba(163,230,53,.2); margin-top: 13px; }
+    .panel.span-full { margin-top: 13px; }
+    .panel-kicker.sky { color: #38BDF8; }
+    .panel-kicker.cyan { color: #67E8F9; }
+    .panel-ico.sky { color: rgba(56,189,248,.55); }
+    .panel-ico.cyan { color: rgba(103,232,249,.55); }
     .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
     .panel-kicker { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .18em; color: var(--lime); }
     .panel-title { font-size: 14.5px; font-weight: 700; margin-top: 5px; letter-spacing: -.01em; }
@@ -214,7 +219,7 @@
     .impacto-box .lbl { font-size: 9.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-mute); }
     .impacto-box .val { font-family: var(--mono); font-size: 19px; font-weight: 700; color: var(--amber); margin-top: 3px; }
     .impacto-box .sub { font-size: 9.5px; color: var(--text-mute); margin-top: 2px; }
-    .legend { display: flex; gap: 14px; font-size: 10.5px; color: var(--text-dim); justify-content: center; margin-top: 10px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 10.5px; color: var(--text-dim); justify-content: center; margin-top: 10px; }
     .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; }
 
     /* lista de alertas — igual à do app: avatar redondo, emitente, tipo · detalhe, valor âmbar */
@@ -734,7 +739,7 @@
                   <div style="min-width:0">
                     <div class="app-kicker">Boa tarde, XVAL Tecnologia LTDA</div>
                     <div class="app-h1">Cockpit <span style="color:var(--lime)">fiscal</span></div>
-                    <div class="app-sub">Visão de materialidade e aderência ERP × Fisco de XVAL Tecnologia LTDA, competência junho/2026.</div>
+                    <div class="app-sub">Visão agregada de XVAL Tecnologia LTDA: débitos de saída × créditos de entrada (DistDFe), competência junho/2026.</div>
                   </div>
                   <div class="app-actions">
                     <span class="period-pill">
@@ -753,22 +758,22 @@
                   <div class="kpi" style="--k-line:#A3E635">
                     <div class="k-label">Documentos conciliados</div>
                     <div class="k-value">48.217</div>
-                    <div class="k-delta">99,2% do período</div>
+                    <div class="k-delta">99,2% do período (saídas)</div>
                   </div>
                   <div class="kpi" style="--k-line:#F87171">
                     <div class="k-label">Divergências abertas</div>
                     <div class="k-value">37</div>
-                    <div class="k-delta">R$ 1,2 mi em risco</div>
+                    <div class="k-delta">R$ 1,2 mi em risco · 24 saídas / 13 entradas</div>
                   </div>
                   <div class="kpi" style="--k-line:#38BDF8">
-                    <div class="k-label">Créditos CBS (XMLs)</div>
-                    <div class="k-value">R$ 8,6 mi</div>
-                    <div class="k-delta">94% conciliados com o Fisco</div>
+                    <div class="k-label">Débitos ERP (CBS+IBS)</div>
+                    <div class="k-value">R$ 9,0 mi</div>
+                    <div class="k-delta">CBS R$ 7,2 mi · IBS R$ 1,8 mi</div>
                   </div>
-                  <div class="kpi" style="--k-line:#E879F9">
-                    <div class="k-label">Saldo CBS apurado</div>
-                    <div class="k-value">R$ 3,2 mi</div>
-                    <div class="k-delta">Débitos CBS na apuração assistida</div>
+                  <div class="kpi" style="--k-line:#A78BFA">
+                    <div class="k-label">Saldo líquido estimado</div>
+                    <div class="k-value">−R$ 2,1 mi</div>
+                    <div class="k-delta">CBS −R$ 1,4 mi · IBS −R$ 0,7 mi · LC 214</div>
                   </div>
                 </div>
 
@@ -776,62 +781,119 @@
                   <div class="panel">
                     <div class="panel-head">
                       <div>
-                        <div class="panel-kicker">Débitos vs Créditos · CBS · IBS · IS</div>
-                        <div class="panel-title">Seus XMLs × apuração Fisco</div>
+                        <div class="panel-kicker sky">Eixo saídas · débitos</div>
+                        <div class="panel-title">O que apurei × o que o Fisco apurou</div>
+                        <div class="panel-sub">CBS + IBS nas saídas do ERP versus débitos da Apuração Assistida</div>
                       </div>
-                      <svg class="panel-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M8 21h8M3 7h18M6.5 7 3 14h7zM17.5 7 14 14h7z"/></svg>
+                      <svg class="panel-ico sky" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M8 21h8M3 7h18M6.5 7 3 14h7zM17.5 7 14 14h7z"/></svg>
                     </div>
-                    <svg viewBox="0 0 300 150" width="100%" height="150" style="display:block;margin-top:14px" role="img" aria-label="Créditos dos XMLs comparados aos débitos da apuração do Fisco">
+                    <svg viewBox="0 0 300 158" width="100%" height="158" style="display:block;margin-top:12px" role="img" aria-label="Débitos ERP versus débitos Fisco com CBS e IBS empilhados">
                       <g stroke="rgba(255,255,255,.06)" stroke-dasharray="3 3">
-                        <line x1="34" y1="18" x2="292" y2="18"/><line x1="34" y1="48" x2="292" y2="48"/>
-                        <line x1="34" y1="78" x2="292" y2="78"/><line x1="34" y1="108" x2="292" y2="108"/>
+                        <line x1="36" y1="18" x2="292" y2="18"/><line x1="36" y1="48" x2="292" y2="48"/>
+                        <line x1="36" y1="78" x2="292" y2="78"/><line x1="36" y1="108" x2="292" y2="108"/>
                       </g>
                       <g font-family="JetBrains Mono, monospace" font-size="8" fill="#71717A">
-                        <text x="4" y="21">R$ 12mi</text><text x="10" y="51">R$ 8mi</text><text x="10" y="81">R$ 4mi</text>
+                        <text x="2" y="21">R$ 12mi</text><text x="6" y="51">R$ 9mi</text><text x="6" y="81">R$ 6mi</text><text x="6" y="111">R$ 3mi</text>
                       </g>
-                      <line x1="34" y1="122" x2="292" y2="122" stroke="rgba(255,255,255,.09)"/>
-                      <rect x="82" y="58" width="58" height="64" rx="6" fill="#A3E635"/>
-                      <rect x="186" y="98" width="58" height="24" rx="6" fill="#E879F9"/>
-                      <g font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#A1A1AA" text-anchor="middle">
-                        <text x="111" y="138">Créditos (XMLs)</text><text x="215" y="138">Débitos (Fisco)</text>
+                      <line x1="36" y1="122" x2="292" y2="122" stroke="rgba(255,255,255,.09)"/>
+                      <!-- ERP (saídas): CBS + IBS — base das barras em y=122 -->
+                      <rect x="58" y="62" width="48" height="60" fill="#38BDF8"/>
+                      <rect x="58" y="47" width="48" height="15" rx="6" fill="#A78BFA"/>
+                      <!-- Fisco (apuração): CBS + IBS -->
+                      <rect x="178" y="101" width="48" height="21" fill="#38BDF8"/>
+                      <rect x="178" y="95" width="48" height="6" rx="6" fill="#A78BFA"/>
+                      <g font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" fill="#A1A1AA" text-anchor="middle">
+                        <text x="82" y="136">ERP (saídas)</text>
+                        <text x="202" y="136">Fisco (apuração)</text>
                       </g>
                     </svg>
+                    <div class="legend">
+                      <span><i style="background:#38BDF8"></i>CBS</span>
+                      <span><i style="background:#A78BFA"></i>IBS</span>
+                    </div>
                   </div>
 
                   <div class="panel">
                     <div class="panel-head">
                       <div>
-                        <div class="panel-kicker">Comparativo mensal</div>
-                        <div class="panel-title">Créditos ERP × débitos Fisco</div>
-                        <div class="panel-sub">Valores CBS por competência conciliada</div>
+                        <div class="panel-kicker cyan">Eixo entradas · créditos</div>
+                        <div class="panel-title">Crédito que lancei × DistDFe</div>
+                        <div class="panel-sub">ERP compras versus DistDFe (proxy de crédito CBS+IBS)</div>
                       </div>
-                      <svg class="panel-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
+                      <svg class="panel-ico cyan" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
                     </div>
-                    <svg viewBox="0 0 300 128" width="100%" height="128" style="display:block;margin-top:10px" role="img" aria-label="Créditos do ERP e débitos do Fisco por mês">
+                    <svg viewBox="0 0 300 158" width="100%" height="158" style="display:block;margin-top:12px" role="img" aria-label="Créditos ERP versus DistDFe com CBS e IBS empilhados">
                       <g stroke="rgba(255,255,255,.06)" stroke-dasharray="3 3">
-                        <line x1="30" y1="14" x2="296" y2="14"/><line x1="30" y1="44" x2="296" y2="44"/><line x1="30" y1="74" x2="296" y2="74"/>
+                        <line x1="36" y1="18" x2="292" y2="18"/><line x1="36" y1="48" x2="292" y2="48"/>
+                        <line x1="36" y1="78" x2="292" y2="78"/><line x1="36" y1="108" x2="292" y2="108"/>
                       </g>
                       <g font-family="JetBrains Mono, monospace" font-size="8" fill="#71717A">
-                        <text x="2" y="17">12mi</text><text x="6" y="47">8mi</text><text x="6" y="77">4mi</text>
+                        <text x="2" y="21">R$ 12mi</text><text x="6" y="51">R$ 9mi</text><text x="6" y="81">R$ 6mi</text><text x="6" y="111">R$ 3mi</text>
                       </g>
-                      <line x1="30" y1="104" x2="296" y2="104" stroke="rgba(255,255,255,.09)"/>
-                      <g>
-                        <rect x="40" y="52" width="13" height="52" rx="3" fill="#A3E635"/><rect x="55" y="66" width="13" height="38" rx="3" fill="#E879F9"/>
-                        <rect x="83" y="44" width="13" height="60" rx="3" fill="#A3E635"/><rect x="98" y="62" width="13" height="42" rx="3" fill="#E879F9"/>
-                        <rect x="126" y="50" width="13" height="54" rx="3" fill="#A3E635"/><rect x="141" y="68" width="13" height="36" rx="3" fill="#E879F9"/>
-                        <rect x="169" y="36" width="13" height="68" rx="3" fill="#A3E635"/><rect x="184" y="58" width="13" height="46" rx="3" fill="#E879F9"/>
-                        <rect x="212" y="42" width="13" height="62" rx="3" fill="#A3E635"/><rect x="227" y="60" width="13" height="44" rx="3" fill="#E879F9"/>
-                        <rect x="255" y="28" width="13" height="76" rx="3" fill="#A3E635"/><rect x="270" y="52" width="13" height="52" rx="3" fill="#E879F9"/>
-                      </g>
-                      <g font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" fill="#71717A" text-anchor="middle">
-                        <text x="54" y="118">Jan</text><text x="97" y="118">Fev</text><text x="140" y="118">Mar</text>
-                        <text x="183" y="118">Abr</text><text x="226" y="118">Mai</text><text x="269" y="118">Jun</text>
+                      <line x1="36" y1="122" x2="292" y2="122" stroke="rgba(255,255,255,.09)"/>
+                      <!-- ERP (compras): CBS + IBS -->
+                      <rect x="58" y="80" width="48" height="42" fill="#A3E635"/>
+                      <rect x="58" y="70" width="48" height="10" rx="6" fill="#67E8F9"/>
+                      <!-- DistDFe (proxy): CBS + IBS -->
+                      <rect x="178" y="87" width="48" height="35" fill="#A3E635"/>
+                      <rect x="178" y="79" width="48" height="8" rx="6" fill="#67E8F9"/>
+                      <g font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" fill="#A1A1AA" text-anchor="middle">
+                        <text x="82" y="136">ERP (compras)</text>
+                        <text x="202" y="136">DistDFe (proxy)</text>
                       </g>
                     </svg>
                     <div class="legend">
-                      <span><i style="background:#A3E635"></i>Créditos (XMLs)</span>
-                      <span><i style="background:#E879F9"></i>Débitos (Fisco)</span>
+                      <span><i style="background:#A3E635"></i>CBS</span>
+                      <span><i style="background:#67E8F9"></i>IBS</span>
                     </div>
+                  </div>
+                </div>
+
+                <div class="panel span-full">
+                  <div class="panel-head">
+                    <div>
+                      <div class="panel-kicker">Comparativo mensal</div>
+                      <div class="panel-title">Débitos e créditos lado a lado</div>
+                      <div class="panel-sub">Débito ERP × Fisco · Crédito ERP × DistDFe (proxy até API de créditos)</div>
+                    </div>
+                    <svg class="panel-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                  </div>
+                  <svg viewBox="0 0 300 132" width="100%" height="132" style="display:block;margin-top:10px" role="img" aria-label="Comparativo mensal de débitos e créditos ERP e Fisco">
+                    <g stroke="rgba(255,255,255,.06)" stroke-dasharray="3 3">
+                      <line x1="28" y1="14" x2="296" y2="14"/><line x1="28" y1="44" x2="296" y2="44"/><line x1="28" y1="74" x2="296" y2="74"/>
+                    </g>
+                    <g font-family="JetBrains Mono, monospace" font-size="8" fill="#71717A">
+                      <text x="2" y="17">12mi</text><text x="6" y="47">8mi</text><text x="6" y="77">4mi</text>
+                    </g>
+                    <line x1="28" y1="104" x2="296" y2="104" stroke="rgba(255,255,255,.09)"/>
+                    <!-- Jan -->
+                    <rect x="28" y="46" width="8" height="58" rx="3" fill="#38BDF8"/><rect x="38" y="82" width="8" height="22" rx="3" fill="#E879F9"/>
+                    <rect x="48" y="56" width="8" height="48" rx="3" fill="#67E8F9"/><rect x="58" y="62" width="8" height="42" rx="3" fill="#A3E635"/>
+                    <!-- Fev -->
+                    <rect x="74" y="42" width="8" height="62" rx="3" fill="#38BDF8"/><rect x="84" y="80" width="8" height="24" rx="3" fill="#E879F9"/>
+                    <rect x="94" y="52" width="8" height="52" rx="3" fill="#67E8F9"/><rect x="104" y="59" width="8" height="45" rx="3" fill="#A3E635"/>
+                    <!-- Mar -->
+                    <rect x="120" y="49" width="8" height="55" rx="3" fill="#38BDF8"/><rect x="130" y="84" width="8" height="20" rx="3" fill="#E879F9"/>
+                    <rect x="140" y="58" width="8" height="46" rx="3" fill="#67E8F9"/><rect x="150" y="64" width="8" height="40" rx="3" fill="#A3E635"/>
+                    <!-- Abr -->
+                    <rect x="166" y="36" width="8" height="68" rx="3" fill="#38BDF8"/><rect x="176" y="78" width="8" height="26" rx="3" fill="#E879F9"/>
+                    <rect x="186" y="50" width="8" height="54" rx="3" fill="#67E8F9"/><rect x="196" y="56" width="8" height="48" rx="3" fill="#A3E635"/>
+                    <!-- Mai -->
+                    <rect x="212" y="44" width="8" height="60" rx="3" fill="#38BDF8"/><rect x="222" y="81" width="8" height="23" rx="3" fill="#E879F9"/>
+                    <rect x="232" y="54" width="8" height="50" rx="3" fill="#67E8F9"/><rect x="242" y="60" width="8" height="44" rx="3" fill="#A3E635"/>
+                    <!-- Jun -->
+                    <rect x="258" y="32" width="8" height="72" rx="3" fill="#38BDF8"/><rect x="268" y="76" width="8" height="28" rx="3" fill="#E879F9"/>
+                    <rect x="278" y="48" width="8" height="56" rx="3" fill="#67E8F9"/><rect x="288" y="54" width="8" height="50" rx="3" fill="#A3E635"/>
+                    <g font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" fill="#71717A" text-anchor="middle">
+                      <text x="43" y="118">Jan</text><text x="89" y="118">Fev</text><text x="135" y="118">Mar</text>
+                      <text x="181" y="118">Abr</text><text x="227" y="118">Mai</text><text x="273" y="118">Jun</text>
+                    </g>
+                  </svg>
+                  <div class="legend">
+                    <span><i style="background:#38BDF8"></i>Débito ERP</span>
+                    <span><i style="background:#E879F9"></i>Débito Fisco</span>
+                    <span><i style="background:#67E8F9"></i>Crédito ERP</span>
+                    <span><i style="background:#A3E635"></i>Crédito DistDFe</span>
                   </div>
                 </div>
 

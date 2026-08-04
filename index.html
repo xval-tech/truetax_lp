@@ -441,12 +441,27 @@
     .sb-c { background: rgba(251,191,36,.12); color: var(--amber); }
     .sb-d { background: var(--red-soft); color: var(--red); }
 
-    .cash-chart { display: flex; align-items: flex-end; gap: 8px; height: 130px; padding: 6px 2px 0; }
-    .cash-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 3px; height: 100%; }
-    .cash-seg { border-radius: 4px 4px 0 0; }
-    .cash-seg.retained { background: rgba(217,70,239,.55); border-radius: 4px; }
-    .cash-seg.net { background: rgba(163,230,53,.5); }
-    .cash-lbl { font-family: var(--mono); font-size: 9.5px; color: var(--text-mute); text-align: center; margin-top: 6px; }
+    .cash-chart { display: flex; align-items: flex-end; gap: 6px; height: 156px; padding: 4px 2px 0; }
+    .cash-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; height: 100%; min-width: 0; }
+    .cash-top-val { font-family: var(--mono); font-size: 8px; color: var(--text-mute); text-align: center; line-height: 1.2; white-space: nowrap; }
+    .cash-ret-val { font-family: var(--mono); font-size: 7.5px; color: #C084FC; text-align: center; line-height: 1.2; white-space: nowrap; }
+    .cash-stack { display: flex; flex-direction: column; justify-content: flex-end; flex: 1; min-height: 0; gap: 2px; width: 100%; }
+    .cash-seg { min-height: 3px; position: relative; }
+    .cash-seg.ibs { flex: 187 0 0; background: rgba(167,139,250,.62); border-radius: 3px 3px 0 0; }
+    .cash-seg.cbs { flex: 92 0 0; background: rgba(56,189,248,.58); }
+    .cash-seg.net { flex: 721 0 0; background: rgba(163,230,53,.48); border-radius: 0 0 3px 3px; }
+    .cash-lbl { font-family: var(--mono); font-size: 9.5px; color: var(--text-mute); text-align: center; margin-top: 5px; }
+    .cash-summary {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px;
+      padding: 10px 12px; background: #101010; border: 1px solid var(--border-soft); border-radius: 9px;
+    }
+    @media (max-width: 520px) { .cash-summary { grid-template-columns: 1fr; } }
+    .cash-summary .cs-item { min-width: 0; }
+    .cash-summary .cs-lbl { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-mute); display: flex; align-items: center; gap: 5px; }
+    .cash-summary .cs-lbl i { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+    .cash-summary .cs-pct { font-family: var(--mono); font-size: 13px; font-weight: 700; margin-top: 3px; }
+    .cash-summary .cs-val { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); margin-top: 2px; }
+    .intel-kpi .k-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; font-weight: 600; }
     .intel-legend { display: flex; gap: 16px; font-size: 11px; color: var(--text-dim); margin-top: 10px; }
     .intel-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; }
 
@@ -1473,20 +1488,114 @@
             </div>
             <div class="intel-kpi magenta">
               <div class="k-label">Retenção média projetada na fonte</div>
-              <div class="k-value">26,5% do faturamento</div>
+              <div class="k-value">27,9% do faturamento</div>
+              <div class="k-sub">IBS 18,7% + CBS 9,21% · caixa líquido 72,1%</div>
             </div>
             <div class="cash-chart">
-              <div class="cash-col"><div class="cash-seg retained" style="height:22%;"></div><div class="cash-seg net" style="height:48%;"></div><div class="cash-lbl">S1</div></div>
-              <div class="cash-col"><div class="cash-seg retained" style="height:24%;"></div><div class="cash-seg net" style="height:53%;"></div><div class="cash-lbl">S2</div></div>
-              <div class="cash-col"><div class="cash-seg retained" style="height:23%;"></div><div class="cash-seg net" style="height:50%;"></div><div class="cash-lbl">S3</div></div>
-              <div class="cash-col"><div class="cash-seg retained" style="height:26%;"></div><div class="cash-seg net" style="height:58%;"></div><div class="cash-lbl">S4</div></div>
-              <div class="cash-col"><div class="cash-seg retained" style="height:25%;"></div><div class="cash-seg net" style="height:55%;"></div><div class="cash-lbl">S5</div></div>
-              <div class="cash-col"><div class="cash-seg retained" style="height:28%;"></div><div class="cash-seg net" style="height:63%;"></div><div class="cash-lbl">S6</div></div>
-              <div class="cash-col"><div class="cash-seg retained" style="height:27%;"></div><div class="cash-seg net" style="height:60%;"></div><div class="cash-lbl">S7</div></div>
-              <div class="cash-col"><div class="cash-seg retained" style="height:30%;"></div><div class="cash-seg net" style="height:68%;"></div><div class="cash-lbl">S8</div></div>
+              <div class="cash-col">
+                <div class="cash-top-val">R$ 8,4 mi</div>
+                <div class="cash-ret-val">−2,34 mi</div>
+                <div class="cash-stack" style="height:80%;">
+                  <div class="cash-seg ibs"></div>
+                  <div class="cash-seg cbs"></div>
+                  <div class="cash-seg net"></div>
+                </div>
+                <div class="cash-lbl">S1</div>
+              </div>
+              <div class="cash-col">
+                <div class="cash-top-val">R$ 9,1 mi</div>
+                <div class="cash-ret-val">−2,54 mi</div>
+                <div class="cash-stack" style="height:87%;">
+                  <div class="cash-seg ibs"></div>
+                  <div class="cash-seg cbs"></div>
+                  <div class="cash-seg net"></div>
+                </div>
+                <div class="cash-lbl">S2</div>
+              </div>
+              <div class="cash-col">
+                <div class="cash-top-val">R$ 8,8 mi</div>
+                <div class="cash-ret-val">−2,46 mi</div>
+                <div class="cash-stack" style="height:84%;">
+                  <div class="cash-seg ibs"></div>
+                  <div class="cash-seg cbs"></div>
+                  <div class="cash-seg net"></div>
+                </div>
+                <div class="cash-lbl">S3</div>
+              </div>
+              <div class="cash-col">
+                <div class="cash-top-val">R$ 9,6 mi</div>
+                <div class="cash-ret-val">−2,68 mi</div>
+                <div class="cash-stack" style="height:91%;">
+                  <div class="cash-seg ibs"></div>
+                  <div class="cash-seg cbs"></div>
+                  <div class="cash-seg net"></div>
+                </div>
+                <div class="cash-lbl">S4</div>
+              </div>
+              <div class="cash-col">
+                <div class="cash-top-val">R$ 9,2 mi</div>
+                <div class="cash-ret-val">−2,57 mi</div>
+                <div class="cash-stack" style="height:88%;">
+                  <div class="cash-seg ibs"></div>
+                  <div class="cash-seg cbs"></div>
+                  <div class="cash-seg net"></div>
+                </div>
+                <div class="cash-lbl">S5</div>
+              </div>
+              <div class="cash-col">
+                <div class="cash-top-val">R$ 10,2 mi</div>
+                <div class="cash-ret-val">−2,85 mi</div>
+                <div class="cash-stack" style="height:97%;">
+                  <div class="cash-seg ibs"></div>
+                  <div class="cash-seg cbs"></div>
+                  <div class="cash-seg net"></div>
+                </div>
+                <div class="cash-lbl">S6</div>
+              </div>
+              <div class="cash-col">
+                <div class="cash-top-val">R$ 9,8 mi</div>
+                <div class="cash-ret-val">−2,74 mi</div>
+                <div class="cash-stack" style="height:93%;">
+                  <div class="cash-seg ibs"></div>
+                  <div class="cash-seg cbs"></div>
+                  <div class="cash-seg net"></div>
+                </div>
+                <div class="cash-lbl">S7</div>
+              </div>
+              <div class="cash-col">
+                <div class="cash-top-val">R$ 10,5 mi</div>
+                <div class="cash-ret-val">−2,93 mi</div>
+                <div class="cash-stack" style="height:100%;">
+                  <div class="cash-seg ibs"></div>
+                  <div class="cash-seg cbs"></div>
+                  <div class="cash-seg net"></div>
+                </div>
+                <div class="cash-lbl">S8</div>
+              </div>
             </div>
-            <div class="intel-legend"><span><i style="background:rgba(217,70,239,.7);"></i>Retido na fonte (split)</span><span><i style="background:rgba(163,230,53,.6);"></i>Caixa líquido</span></div>
-            <div class="intel-foot">fonte: prazos de pagamento dos XMLs + alíquotas CBS/IBS vigentes</div>
+            <div class="cash-summary">
+              <div class="cs-item">
+                <div class="cs-lbl"><i style="background:#A78BFA"></i>IBS retido</div>
+                <div class="cs-pct" style="color:#A78BFA">18,7%</div>
+                <div class="cs-val">R$ 14,1 mi / 8 sem.</div>
+              </div>
+              <div class="cs-item">
+                <div class="cs-lbl"><i style="background:#38BDF8"></i>CBS retido</div>
+                <div class="cs-pct" style="color:#38BDF8">9,21%</div>
+                <div class="cs-val">R$ 6,96 mi / 8 sem.</div>
+              </div>
+              <div class="cs-item">
+                <div class="cs-lbl"><i style="background:rgba(163,230,53,.7)"></i>Caixa líquido</div>
+                <div class="cs-pct" style="color:var(--lime)">72,1%</div>
+                <div class="cs-val">R$ 54,5 mi / 8 sem.</div>
+              </div>
+            </div>
+            <div class="intel-legend">
+              <span><i style="background:rgba(167,139,250,.7);"></i>IBS na fonte</span>
+              <span><i style="background:rgba(56,189,248,.7);"></i>CBS na fonte</span>
+              <span><i style="background:rgba(163,230,53,.6);"></i>Recebido líquido</span>
+            </div>
+            <div class="intel-foot">fonte: prazos de pagamento dos XMLs · faturamento R$ 75,6 mi no período</div>
           </div>
         </div>
 
